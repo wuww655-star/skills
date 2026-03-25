@@ -5,6 +5,7 @@ Scans for vulnerabilities, exposed credentials, insecure settings.
 """
 
 import argparse
+import typing
 import json
 import os
 import re
@@ -52,7 +53,7 @@ class SecurityCheck:
 SEVERITY_SCORES = {"CRITICAL": 20, "HIGH": 15, "MEDIUM": 10, "LOW": 5}
 
 
-def load_config(path: Path) -> dict | None:
+def load_config(path: Path) -> typing.Optional[dict]:
     if not path.exists():
         print(f"Config file not found: {path}", file=sys.stderr)
         return None
@@ -453,3 +454,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
